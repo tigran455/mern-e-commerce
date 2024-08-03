@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import loginIcon from "../assest/signin.gif";
 import {FaEye, FaEyeSlash} from "react-icons/fa";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import imageToBase64 from "../helpers/imageToBase64";
+import SummaryApi from "../common";
+import {toast} from "react-toastify";
 
 const SignUp = () => {
     const [showPassword, setShowPassword] = useState(false)
@@ -14,6 +16,7 @@ const SignUp = () => {
         confirmPassword: "",
         profilePic: ""
     })
+    const navigate = useNavigate()
     const handleOnChange = (e) => {
         const {name, value} = e.target
         setData((prev)=>{
@@ -36,11 +39,35 @@ const SignUp = () => {
         })
 
     }
-    const handleSubmit = (e)=>{
+    const handleSubmit = async (e)=>{
         e.preventDefault()
 
+        if(data.password === data.confirmPassword){
+
+            const dataResponse = await fetch(SummaryApi.signUp.url,{
+                method : SummaryApi.signUp.method,
+                headers : {
+                    "content-type" : "application/json"
+                },
+                body : JSON.stringify(data)
+            })
+
+            const dataApi = await dataResponse.json()
+
+            if(dataApi.success){
+                toast.success(dataApi.message)
+                navigate("/login")
+            }
+
+            if(dataApi.error){
+                toast.error(dataApi.message)
+            }
+
+        } else {
+            console.log("Please check password and confirm password")
+        }
+
     }
-    console.log(data)
     return (
         <section id='signup'>
             <div className='mx-auto container p-5'>
