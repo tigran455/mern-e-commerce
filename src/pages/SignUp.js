@@ -64,7 +64,7 @@ const SignUp = () => {
             }
 
         } else {
-            console.log("Please check password and confirm password")
+            toast.error("Please check password and confirm password")
         }
 
     }
