@@ -13,7 +13,8 @@ const Login = () => {
         password: ""
     })
     const navigate = useNavigate()
-    const {fetchUserDetails} = useContext(Context)
+    const { fetchUserDetails } = useContext(Context)
+    console.log("fetchUserDetails",fetchUserDetails)
 
 
     const handleOnChange = (e) => {
