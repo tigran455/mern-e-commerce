@@ -4,9 +4,8 @@ import SummaryApi from '../common'
 import { FaStar } from "react-icons/fa";
 import { FaStarHalf } from "react-icons/fa";
 import displayINRCurrency from '../helpers/displayCurrency';
-import VerticalCardProduct from '../components/VerticalCardProduct';
 import CategoryWiseProductDisplay from '../components/CategoryWiseProductDisplay';
-// import addToCart from '../helpers/addToCart';
+import addToCart from '../helpers/addToCart';
 import Context from '../context';
 
 const ProductDetails = () => {
@@ -83,12 +82,12 @@ const ProductDetails = () => {
 
 
     const handleAddToCart = async(e,id) =>{
-        // await addToCart(e,id)
+        await addToCart(e,id)
         fetchUserAddToCart()
     }
 
     const handleBuyProduct = async(e,id)=>{
-        // await addToCart(e,id)
+        await addToCart(e,id)
         fetchUserAddToCart()
         navigate("/cart")
 
