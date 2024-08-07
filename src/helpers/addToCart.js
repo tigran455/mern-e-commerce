@@ -21,14 +21,10 @@ const addToCart = async(e,id) =>{
     if(responseData.success){
         toast.success(responseData.message)
     }
-
     if(responseData.error){
         toast.error(responseData.message)
     }
-
-
     return responseData
-
 }
 
 

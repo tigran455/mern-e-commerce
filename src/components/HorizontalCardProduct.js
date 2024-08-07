@@ -19,7 +19,7 @@ const HorizontalCardProduct = ({category, heading}) => {
 
     const handleAddToCart = async(e,id)=>{
         await addToCart(e,id)
-        // fetchUserAddToCart()
+        fetchUserAddToCart()
     }
 
     const fetchData = async() =>{
