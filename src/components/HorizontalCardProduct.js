@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import displayINRCurrency from '../helpers/displayCurrency'
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
-// import addToCart from '../helpers/addToCart'
 import Context from '../context'
 import fetchCategoryWiseProduct from "../helpers/fetchCategoryWiseProduct";
+import addToCart from "../helpers/addToCart";
 
 const HorizontalCardProduct = ({category, heading}) => {
     const [data,setData] = useState([])
@@ -18,7 +18,7 @@ const HorizontalCardProduct = ({category, heading}) => {
     const { fetchUserAddToCart } = useContext(Context)
 
     const handleAddToCart = async(e,id)=>{
-        // await addToCart(e,id)
+        await addToCart(e,id)
         // fetchUserAddToCart()
     }
 
