@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import productCategory from '../helpers/productCategory'
-// import VerticalCard from '../components/VerticalCard'
+import VerticalCard from '../components/VerticalCard'
 import SummaryApi from '../common'
 
 const CategoryProduct = () => {
@@ -46,6 +46,7 @@ const CategoryProduct = () => {
                 [value] : checked
             }
         })
+        console.log('selectCategory',selectCategory)
     }
 
     useEffect(()=>{
@@ -125,7 +126,7 @@ const CategoryProduct = () => {
                             {
                                 productCategory.map((categoryName,index)=>{
                                     return(
-                                        <div className='flex items-center gap-3'>
+                                        <div key={categoryName.id} className='flex items-center gap-3'>
                                             <input type='checkbox' name={"category"} checked={selectCategory[categoryName?.value]} value={categoryName?.value} id={categoryName?.value} onChange={handleSelectCategory} />
                                             <label htmlFor={categoryName?.value}>{categoryName?.label}</label>
                                         </div>
@@ -145,9 +146,9 @@ const CategoryProduct = () => {
 
                     <div className='min-h-[calc(100vh-120px)] overflow-y-scroll max-h-[calc(100vh-120px)]'>
                         {
-                            // data.length !== 0 && !loading && (
-                            //     <VerticalCard data={data} loading={loading}/>
-                            // )
+                            data.length !== 0 && !loading && (
+                                <VerticalCard data={data} loading={loading}/>
+                            )
                         }
                     </div>
                 </div>
